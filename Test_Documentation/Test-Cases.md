@@ -230,8 +230,8 @@
 
 **Тестовые данные:**
 - **Username:** `standard_user`
-- **Товар:** Sauce Labs Fleece Jacket — $49.99
-- **Товар:** Sauce Labs Onesie — $7.99
+- **Товар:** Sauce Labs Fleece Jacket - $49.99
+- **Товар:** Sauce Labs Onesie - $7.99
 
 **Шаги выполнения:**
 1. Найти товар **Sauce Labs Fleece Jacket** в каталоге.

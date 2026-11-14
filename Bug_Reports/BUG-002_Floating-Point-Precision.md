@@ -23,8 +23,8 @@
 5. Нажать кнопку **Continue**.
 6. На странице **Overview** проверить значение **Item total**.
 7. Повторить проверку с другой комбинацией товаров:
-   - **Sauce Labs Fleece Jacket** — $49.99.
-   - **Sauce Labs Bike Light** — $9.99.
+   - **Sauce Labs Fleece Jacket** - $49.99.
+   - **Sauce Labs Bike Light** - $9.99.
 
 ## Ожидаемый результат
 

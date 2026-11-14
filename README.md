@@ -50,17 +50,17 @@
 
 Подробные описания обнаруженных дефектов:
 
-- [BUG-001 — Проверка полей оформления заказа](Bug_Reports/BUG-001_Whitespace-Only-Checkout-Fields.md)
-- [BUG-002 — Погрешность вычисления суммы товаров](Bug_Reports/BUG-002_Floating-Point-Precision.md)
-- [BUG-003 — Отображение кириллицы в PDF](Bug_Reports/BUG-003_Cyrillic-Rendering-in-PDF.md)
-- [BUG-004 — Обрезание почтового индекса в PDF](Bug_Reports/BUG-004_Postal-Code-Clipping-in-PDF.md)
+- [BUG-001 - Проверка полей оформления заказа](Bug_Reports/BUG-001_Whitespace-Only-Checkout-Fields.md)
+- [BUG-002 - Погрешность вычисления суммы товаров](Bug_Reports/BUG-002_Floating-Point-Precision.md)
+- [BUG-003 - Отображение кириллицы в PDF](Bug_Reports/BUG-003_Cyrillic-Rendering-in-PDF.md)
+- [BUG-004 - Обрезание почтового индекса в PDF](Bug_Reports/BUG-004_Postal-Code-Clipping-in-PDF.md)
 
 ## Используемые инструменты и технологии
 
-- **SauceDemo** — тестируемое веб-приложение.
-- **Markdown** — оформление тестовой документации.
-- **Git и GitHub** — управление версиями и размещение проекта.
-- **Скриншоты** — фиксация результатов проверок и подтверждение обнаруженных дефектов.
+- **SauceDemo** - тестируемое веб-приложение.
+- **Markdown** - оформление тестовой документации.
+- **Git и GitHub** - управление версиями и размещение проекта.
+- **Скриншоты** - фиксация результатов проверок и подтверждение обнаруженных дефектов.
 
 ## Ограничения
 
