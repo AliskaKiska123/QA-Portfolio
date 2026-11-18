@@ -1,0 +1,243 @@
+{
+  "info": {
+    "_collection_link": "https://go.postman.co/collection/60286628-c874b571-304f-4608-b187-d9cc3c529e96?source=collection_link",
+    "_exporter_id": "60286628",
+    "_postman_id": "c874b571-304f-4608-b187-d9cc3c529e96",
+    "name": "QA Portfolio - API Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "item": [
+        {
+          "name": "Получение существующего пользователя",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              },
+              "raw": ""
+            },
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "users",
+                "18"
+              ],
+              "protocol": "https",
+              "raw": "https://dummyjson.com/users/18"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение несуществующего пользователя",
+          "request": {
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "users",
+                "9999"
+              ],
+              "protocol": "https",
+              "raw": "https://dummyjson.com/users/9999"
+            }
+          },
+          "response": []
+        }
+      ],
+      "name": "Users"
+    },
+    {
+      "item": [
+        {
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r\n\r\npm.collectionVariables.set(\"accessToken\", response.accessToken);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "name": "Успешная авторизация",
+          "request": {
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\r\n    \"username\": \"logant\",\r\n    \"password\": \"logantpass\"\r\n}"
+            },
+            "header": [],
+            "method": "POST",
+            "url": {
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ],
+              "protocol": "https",
+              "raw": "https://dummyjson.com/auth/login"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение профиля с действительным токеном",
+          "request": {
+            "auth": {
+              "bearer": [
+                {
+                  "key": "token",
+                  "type": "string",
+                  "value": "{{accessToken}}"
+                }
+              ],
+              "type": "bearer"
+            },
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ],
+              "protocol": "https",
+              "raw": "https://dummyjson.com/auth/me"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение профиля без токена",
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ],
+              "protocol": "https",
+              "raw": "https://dummyjson.com/auth/me"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение профиля с недействительным токеном",
+          "request": {
+            "auth": {
+              "bearer": [
+                {
+                  "key": "token",
+                  "type": "string",
+                  "value": "wrong_token_123"
+                }
+              ],
+              "type": "bearer"
+            },
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ],
+              "protocol": "https",
+              "raw": "https://dummyjson.com/auth/me"
+            }
+          },
+          "response": []
+        },
+        {
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const data = pm.response.json();\r\n\r\n// Проверка наличия email\r\npm.test(\"Email присутствует в ответе\", function () {\r\n    pm.expect(data).to.have.property(\"email\");\r\n});\r\n\r\n// Проверка значения email\r\npm.test(\"Email соответствует ожидаемому\", function () {\r\n    pm.expect(data.email).to.eql(\"logan.torres@x.dummyjson.com\");\r\n});\r\n\r\n// Проверка типа ID\r\npm.test(\"ID имеет числовой тип\", function () {\r\n    pm.expect(data.id).to.be.a(\"number\");\r\n});\r\n\r\n// Проверка типа email\r\npm.test(\"Email имеет строковый тип\", function () {\r\n    pm.expect(data.email).to.be.a(\"string\");\r\n});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "name": "Проверка email и типов данных профиля",
+          "request": {
+            "auth": {
+              "bearer": [
+                {
+                  "key": "token",
+                  "type": "string",
+                  "value": "{{accessToken}}"
+                }
+              ],
+              "type": "bearer"
+            },
+            "header": [],
+            "method": "GET",
+            "url": {
+              "host": [
+                "dummyjson",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ],
+              "protocol": "https",
+              "raw": "https://dummyjson.com/auth/me"
+            }
+          },
+          "response": []
+        }
+      ],
+      "name": "Authentication"
+    }
+  ],
+  "variable": [
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ]
+}
